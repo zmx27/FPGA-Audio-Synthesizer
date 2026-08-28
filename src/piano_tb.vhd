@@ -75,7 +75,7 @@ BEGIN
 	for i in 0 to 6 loop
 		pb_in <= "0000";
 		-- Shift the bits one position to the right, feeding a '0' into the MSB
-		switch_in <= ‘0’ & switch_in(7 downto 1);
+		switch_in <= '0' & switch_in(7 downto 1);
 		wait for 5 ms;
 	end loop;
 	
