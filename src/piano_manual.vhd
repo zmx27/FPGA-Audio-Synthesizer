@@ -255,34 +255,5 @@ begin
 
         end if;
     end process; 
-
-    note_in <= note_next;
-    process (CLK,RST) begin
-        if (RST = '1') then
-            note_next <= (others => '0');
-        elsif (CLK'event and CLK = '1') then                        
-            case switch is 
-                when "10000000" => note_sel <= "0001"; -- C
-                when "01000000" => note_sel <= "0011"; -- D
-                when "00100000" => note_sel <= "0101"; -- E
-                when "00010000" => note_sel <= "0110"; -- F
-                when "00001000" => note_sel <= "1000"; -- G
-                when "00000100" => note_sel <= "1010"; -- A
-                when "00000010" => note_sel <= "1100"; -- B
-                when others     => note_sel <= "0000"; 
-            end case;
-
-            -- Sharp -- Add one.  PB(3) is the octave key.
-            if (PB(2) = '1') then
-                note_next <= PB(3) & note_sel + 1;
-            -- Flat --  Minus one.
-            elsif (PB(1) = '1') then
-                note_next <= PB(3) & note_sel - 1;
-            else 
-                note_next <= PB(3) & note_sel;
-            end if;
-
-        end if;
-    end process; 
     
 end Behavioral;
