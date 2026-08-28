@@ -271,7 +271,7 @@ begin
             if (playing = '1') then
                 if (beat_tick = '1') then -- Move to next note when metronome beats
                     if (song_index = 31) then
-                        song_index <= 0 -- Reached the end of the song
+                        song_index <= 0; -- Reached the end of the song
                     else
                         song_index <= song_index + 1;
                     end if;
